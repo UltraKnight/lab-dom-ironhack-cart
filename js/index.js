@@ -4,6 +4,8 @@ function updateSubtotal(product) {
   console.log('Calculating subtotal, yey!');
   //... your code goes here
   let price = product.querySelector('.price span').innerHTML;
+  price = price === "FREE" ? '0.00' : price;
+  
   let quantity = product.querySelector('.quantity input').value;
   let subtotal = (price * quantity).toFixed(2);
   let subtotalElement = product.querySelector('.subtotal span');
@@ -65,7 +67,7 @@ function createProduct() {
   newTr.innerHTML = `<td class="name">
     <span>${productNameEl.value}</span>
   </td>
-  <td class="price">$<span>${price}</span></td>
+  <td class="price">$<span>${price === '0.00' ? 'FREE' : price}</span></td>
   <td class="quantity">
     <input type="number" value="0" min="0" placeholder="Quantity" />
   </td>
